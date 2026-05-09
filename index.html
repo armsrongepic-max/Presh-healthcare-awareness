@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>Presh Healthcare awareness </title>
+
+<!-- FONT -->
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
+
+<!-- ICONS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'DM Sans',sans-serif;
+    background:#ececec;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+    overflow:hidden;
+}
+
+/* MAIN CONTAINER */
+
+.carousel-wrapper{
+    width:100%;
+    max-width:420px;
+    position:relative;
+}
+
+/* CAROUSEL */
+
+.carousel-container{
+    overflow:hidden;
+    border-radius:28px;
+    position:relative;
+}
+
+.carousel{
+    display:flex;
+    transition:transform 0.5s ease;
+}
+
+/* SLIDE */
+
+.slide{
+    min-width:100%;
+    height:720px;
+    background:#f9f8f4;
+    position:relative;
+    padding:28px;
+    overflow:hidden;
+    display:flex;
+    flex-direction:column;
+}
+
+/* TOP SMALL BAR */
+
+.top-bars{
+    display:flex;
+    gap:8px;
+    margin-bottom:22px;
+}
+
+.bar-dark{
+    width:120px;
+    height:18px;
+    background:#1f5d4c;
+}
+
+.bar-light{
+    flex:1;
+    height:18px;
+    background:#b9dd63;
+}
+
+/* BIG CURVE DESIGN */
+
+.slide::before{
+    content:"";
+    position:absolute;
+    width:650px;
+    height:650px;
+    border-radius:50%;
+    background:#b9dd63;
+    top:-160px;
+    right:-420px;
+}
+
+.slide::after{
+    content:"";
+    position:absolute;
+    width:650px;
+    height:650px;
+    border-radius:50%;
+    background:#b9dd63;
+    bottom:-280px;
+    right:-500px;
+}
+
+/* CONTENT */
+
+.content{
+    position:relative;
+    z-index:2;
+    margin-top:20px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    flex:1;
+}
+
+.brand{
+    font-size:15px;
+    color:#214e43;
+    font-weight:700;
+    margin-bottom:30px;
+}
+
+/* ICON */
+
+.icon{
+    width:90px;
+    height:90px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin-bottom:30px;
+}
+
+.icon i{
+    font-size:72px;
+    color:#1f5d4c;
+}
+
+/* TITLES */
+
+h1{
+    font-size:58px;
+    line-height:1.05;
+    color:#1f5d4c;
+    font-weight:800;
+    margin-bottom:26px;
+    letter-spacing:-2px;
+}
+
+/* TEXT */
+
+p{
+    font-size:20px;
+    line-height:1.5;
+    color:#4d5b57;
+    max-width:330px;
+    font-weight:500;
+}
+
+/* ARROWS */
+
+.arrow{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    width:55px;
+    height:55px;
+    border-radius:50%;
+    border:none;
+    background:white;
+    color:#1f5d4c;
+    font-size:20px;
+    cursor:pointer;
+    z-index:10;
+    box-shadow:0 4px 15px rgba(0,0,0,0.1);
+}
+
+.prev{
+    left:-70px;
+}
+
+.next{
+    right:-70px;
+}
+
+/* THUMBNAILS */
+
+.thumbnails{
+    display:flex;
+    gap:12px;
+    overflow-x:auto;
+    margin-top:18px;
+    padding-bottom:5px;
+}
+
+.thumbnails::-webkit-scrollbar{
+    display:none;
+}
+
+.thumb{
+    min-width:95px;
+    height:120px;
+    background:#f9f8f4;
+    border-radius:18px;
+    position:relative;
+    overflow:hidden;
+    cursor:pointer;
+    border:3px solid transparent;
+}
+
+.thumb.active{
+    border:3px solid #1f5d4c;
+}
+
+.thumb::before{
+    content:"";
+    position:absolute;
+    width:120px;
+    height:120px;
+    background:#b9dd63;
+    border-radius:50%;
+    right:-70px;
+    top:-30px;
+}
+
+.thumb-content{
+    position:relative;
+    z-index:2;
+    padding:12px;
+}
+
+.thumb-title{
+    font-size:13px;
+    font-weight:700;
+    color:#1f5d4c;
+    line-height:1.3;
+    margin-top:30px;
+}
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+    .carousel-wrapper{
+        max-width:100%;
+        padding:0 12px;
+    }
+
+    .slide{
+        height:650px;
+        padding:22px;
+    }
+
+    h1{
+        font-size:44px;
+    }
+
+    p{
+        font-size:20px;
+    }
+
+    .icon i{
+        font-size:58px;
+    }
+
+    .prev{
+        left:10px;
+        top:auto;
+        bottom:-70px;
+    }
+
+    .next{
+        right:10px;
+        top:auto;
+        bottom:-70px;
+    }
+
+}
+
+</style>
+</head>
+<body>
+
+<div class="carousel-wrapper">
+
+    <!-- ARROWS -->
+    <button class="arrow prev">
+        <i class="fa-solid fa-chevron-left"></i>
+    </button>
+
+    <button class="arrow next">
+        <i class="fa-solid fa-chevron-right"></i>
+    </button>
+
+    <!-- CAROUSEL -->
+    <div class="carousel-container">
+
+<div class="carousel">
+
+    <!-- SLIDE 1 -->
+    <div class="slide">
+        <div class="top-bars">
+            <div class="bar-dark"></div>
+            <div class="bar-light"></div>
+        </div>
+
+        <div class="content">
+            <div class="brand">Presh Healthcare Awareness</div>
+
+            <div class="icon">
+                <i class="fa-solid fa-heart-pulse"></i>
+            </div>
+
+            <h1>You might be affecting your health every day without even realizing it</h1>
+
+            <p>Let’s talk about common habits we often ignore.</p>
+        </div>
+
+    </div>
+
+    
+    <div class="slide">
+        <div class="top-bars">
+            <div class="bar-dark"></div>
+            <div class="bar-light"></div>
+        </div>
+
+        <div class="content">
+            <div class="brand">Presh Healthcare Awareness</div>
+
+            <div class="icon">
+                <i class="fa-solid fa-stethoscope"></i>
+            </div>
+
+            <h1>It’s not always big diseases…</h1>
+
+            <p>Sometimes, it’s the small everyday habits that slowly affect our health. Let’s look at a few common ones.</p>
+        </div>
+
+
+    </div>
+
+   
+    <div class="slide">
+        <div class="top-bars">
+            <div class="bar-dark"></div>
+            <div class="bar-light"></div>
+        </div>
+
+        <div class="content">
+            <div class="brand">Presh Healthcare Awareness</div>
+
+            <div class="icon">
+                <i class="fa-solid fa-bed"></i>
+            </div>
+
+            <h1>Not getting enough sleep</h1>
+
+            <p>Your body needs rest to feel its best. Poor sleep can leave you tired, moody, and unable to focus during the day.</p>
+        </div>
+
+    </div>
+
+   
+    <div class="slide">
+        <div class="top-bars">
+            <div class="bar-dark"></div>
+            <div class="bar-light"></div>
+        </div>
+
+        <div class="content">
+            <div class="brand">Presh Healthcare Awareness</div>
+
+            <div class="icon">
+                <i class="fa-solid fa-glass-water"></i>
+            </div>
+
+            <h1>Not drinking enough water</h1>
+
+            <p>Not drinking enough water can leave you tired, low on energy, cause headaches, and make it hard to concentrate.</p>
+        </div>
+
+       
+    </div>
+
+    
+    <div class="slide">
+        <div class="top-bars">
+            <div class="bar-dark"></div>
+            <div class="bar-light"></div>
+        </div>
+
+        <div class="content">
+            <div class="brand">Presh Healthcare Awareness</div>
+
+            <div class="icon">
+                <i class="fa-solid fa-brain"></i>
+            </div>
+
+            <h1>Ignoring stress and burnout</h1>
+
+            <p>Stress can affect how you feel both mentally and physically. Taking breaks and rest is important.</p>
+
+            <div style="margin-top:20px; font-weight:700; color:#1f5d4c;">
+                What do you do when you feel stressed?
+            </div>
+        </div>
+
+        
+    </div>
+
+    <!-- SLIDE 6 -->
+    <div class="slide">
+        <div class="top-bars">
+            <div class="bar-dark"></div>
+            <div class="bar-light"></div>
+        </div>
+
+        <div class="content">
+            <div class="brand">Presh Healthcare Awareness</div>
+
+            <div class="icon">
+                <i class="fa-solid fa-chair"></i>
+            </div>
+
+            <h1>Sitting for long hours</h1>
+
+            <p>Sitting for too long without moving your body can affect your health and make you feel less active.</p>
+        </div>
+
+       
+    </div>
+
+    <!-- SLIDE 7 -->
+    <div class="slide">
+        <div class="top-bars">
+            <div class="bar-dark"></div>
+            <div class="bar-light"></div>
+        </div>
+
+        <div class="content">
+            <div class="brand">Presh Healthcare Awareness</div>
+
+            <div class="icon">
+                <i class="fa-solid fa-pills"></i>
+            </div>
+
+            <h1>Taking medications without proper advice</h1>
+
+            <p>Taking medicine without proper advice can make health problems worse or delay proper treatment.</p>
+        </div>
+
+       
+    </div>
+
+    <!-- SLIDE 8 -->
+    <div class="slide">
+        <div class="top-bars">
+            <div class="bar-dark"></div>
+            <div class="bar-light"></div>
+        </div>
+
+        <div class="content">
+            <div class="brand">Presh Healthcare Awareness</div>
+
+            <div class="icon">
+                <i class="fa-solid fa-seedling"></i>
+            </div>
+
+            <h1>Small healthy habits make a big difference</h1>
+
+            <p>Which of these habits are you trying to improve?<br><br>
+            Let's make healthy changes together!</p>
+        </div>
+
+       
+    </div>
+
+</div>
+
+<script>
+
+const carousel = document.querySelector('.carousel');
+const slides = document.querySelectorAll('.slide');
+const thumbs = document.querySelectorAll('.thumb');
+
+const nextBtn = document.querySelector('.next');
+const prevBtn = document.querySelector('.prev');
+
+let index = 0;
+
+function updateCarousel(){
+
+    carousel.style.transform = `translateX(-${index * 100}%)`;
+
+    thumbs.forEach(thumb => thumb.classList.remove('active'));
+
+    thumbs[index].classList.add('active');
+}
+
+/* NEXT */
+
+nextBtn.addEventListener('click', ()=>{
+
+    index++;
+
+    if(index >= slides.length){
+        index = 0;
+    }
+
+    updateCarousel();
+});
+
+/* PREV */
+
+prevBtn.addEventListener('click', ()=>{
+
+    index--;
+
+    if(index < 0){
+        index = slides.length - 1;
+    }
+
+    updateCarousel();
+});
+
+/* THUMB CLICK */
+
+thumbs.forEach((thumb, i)=>{
+
+    thumb.addEventListener('click', ()=>{
+
+        index = i;
+
+        updateCarousel();
+    });
+
+});
+
+/* SWIPE */
+
+let startX = 0;
+
+carousel.addEventListener('touchstart',(e)=>{
+
+    startX = e.touches[0].clientX;
+
+});
+
+carousel.addEventListener('touchend',(e)=>{
+
+    let endX = e.changedTouches[0].clientX;
+
+    if(startX - endX > 50){
+
+        index++;
+
+        if(index >= slides.length){
+            index = 0;
+        }
+
+    }else if(endX - startX > 50){
+
+        index--;
+
+        if(index < 0){
+            index = slides.length - 1;
+        }
+
+    }
+
+    updateCarousel();
+
+});
+
+/* AUTO SLIDE */
+
+setInterval(()=>{
+
+    index++;
+
+    if(index >= slides.length){
+        index = 0;
+    }
+
+    updateCarousel();
+
+},5000);
+
+</script>
+
+</body>
+</html>
